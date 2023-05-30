@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { getComments } from "../redux/actions";
+import { Comments } from "./comments";
 
-const Post = ({ id, title, body, dispatch }) => {
+const Post = ({ id, title, body, dispatch, comments }) => {
+  const [isShow, setisShow] = useState(false);
   return (
     <div className="pt-3">
       <div className="card w-75">
@@ -16,10 +18,27 @@ const Post = ({ id, title, body, dispatch }) => {
           <p className="card-text">{body}</p>
           <button
             className="btn btn-primary"
-            onClick={() => dispatch(getComments(id))}
+            onClick={() => {
+              dispatch(getComments(id));
+              setisShow(!isShow);
+            }}
           >
             Комментарии
           </button>
+        </div>
+        <div>
+          {isShow &&
+            comments.map((comment) => {
+              if (id === comment.postId) {
+                return (
+                  <Comments
+                    id={comment.id}
+                    email={comment.email}
+                    body={comment.body}
+                  />
+                );
+              }
+            })}
         </div>
       </div>
     </div>

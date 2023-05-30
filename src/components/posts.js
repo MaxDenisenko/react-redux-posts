@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Post from "./post";
-import { getComments, getPosts } from "../redux/actions";
+import { getPosts } from "../redux/actions";
 import Loader from "./loader";
 
 const Posts = () => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts.posts);
+  const comments = useSelector((state) => state.posts.comments);
   const load = useSelector((state) => state.app.loading);
   useEffect(() => {
     dispatch(getPosts());
@@ -31,6 +32,7 @@ const Posts = () => {
       id={post.id}
       body={post.body}
       dispatch={dispatch}
+      comments={comments}
     />
   ));
 };
