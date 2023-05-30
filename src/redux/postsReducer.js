@@ -1,4 +1,4 @@
-import { FETCH_POST } from "./types";
+import { FETCH_POST, FETCH_COMMENTS } from "./types";
 
 const initialState = {
   posts: [],
@@ -10,6 +10,16 @@ export const postsReducer = (state = initialState, action) => {
       return {
         ...state,
         posts: action.payload,
+      };
+    case FETCH_COMMENTS:
+      return {
+        ...state,
+        posts: state.posts.map((post) => {
+          if (post.id === action.postId) {
+            return { ...post, comments: action.payload };
+          }
+          return post;
+        }),
       };
     default:
       return state;
