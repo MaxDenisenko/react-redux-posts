@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../redux/actions";
-import { Link, Navigate, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Loader from "./loader";
 import Post from "./post";
 
@@ -10,7 +10,6 @@ const Profile = () => {
   const user = useSelector((state) => state.users.users);
   const posts = useSelector((state) => state.posts.posts);
   const comments = useSelector((state) => state.posts.comments);
-  const load = useSelector((state) => state.app.loading);
   const location = useLocation();
   const { userId } = location.state;
   useEffect(() => {

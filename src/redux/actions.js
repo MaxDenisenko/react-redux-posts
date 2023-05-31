@@ -20,6 +20,7 @@ export const getPosts = () => {
     }, 500);
   };
 };
+
 export const showLoader = () => {
   return { type: SHOW_LOADER };
 };

@@ -1,4 +1,4 @@
-import { FETCH_POST, FETCH_COMMENTS } from "./types";
+import { FETCH_POST, FETCH_COMMENTS, SEARCH } from "./types";
 
 const initialState = {
   posts: [],
@@ -16,6 +16,13 @@ export const postsReducer = (state = initialState, action) => {
       return {
         ...state,
         comments: action.payload,
+      };
+    case SEARCH:
+      return {
+        ...state,
+        posts: state.posts.filter((post) =>
+          post.title.includes(action.payload)
+        ),
       };
     default:
       return state;

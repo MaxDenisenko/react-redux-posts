@@ -13,6 +13,7 @@ const Post = ({ userId, title, body, dispatch, comments, id }) => {
             <img
               style={{ width: 30 }}
               src="https://pic.onlinewebfonts.com/svg/img_569204.png"
+              alt="ava"
             />
           </Link>
         </div>
