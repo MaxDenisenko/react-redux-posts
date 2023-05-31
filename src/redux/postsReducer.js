@@ -1,4 +1,10 @@
-import { FETCH_POST, FETCH_COMMENTS, SEARCH } from "./types";
+import {
+  FETCH_POST,
+  FETCH_COMMENTS,
+  SEARCH,
+  SORT_UP,
+  SORT_DOWN,
+} from "./types";
 
 const initialState = {
   posts: [],
@@ -24,6 +30,18 @@ export const postsReducer = (state = initialState, action) => {
           post.title.includes(action.payload)
         ),
       };
+    case SORT_UP: {
+      return {
+        ...state,
+        posts: [...state.posts.sort((a, b) => (a.title > b.title ? 1 : -1))],
+      };
+    }
+    case SORT_DOWN: {
+      return {
+        ...state,
+        posts: [...state.posts.sort((a, b) => (a.title < b.title ? 1 : -1))],
+      };
+    }
     default:
       return state;
   }

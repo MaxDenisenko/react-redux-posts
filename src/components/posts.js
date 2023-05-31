@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Post from "./post";
 import { getPosts } from "../redux/actions";
 import Loader from "./loader";
-import { SEARCH } from "../redux/types";
+import { SEARCH, SORT_DOWN, SORT_UP } from "../redux/types";
 
 const Posts = () => {
   const [search, setSearch] = useState("");
@@ -23,6 +23,13 @@ const Posts = () => {
     setSearch(e.target.value);
     dispatch({ type: SEARCH, payload: search });
   };
+
+  const sortUp = () => {
+    dispatch({ type: SORT_UP });
+  };
+  const sortDown = () => {
+    dispatch({ type: SORT_DOWN });
+  };
   if (load) {
     return <Loader />;
   }
@@ -39,6 +46,18 @@ const Posts = () => {
           onChange={handleSearchChange}
         />
       </form>
+      <div>
+        <span>
+          <button className="btn btn-primary" onClick={sortUp}>
+            Сортировать по возрастанию
+          </button>
+        </span>
+        <span>
+          <button className="btn btn-secondary" onClick={sortDown}>
+            Сортировать по убыванию
+          </button>
+        </span>
+      </div>
       <div>
         {posts &&
           posts.map((post) => (
