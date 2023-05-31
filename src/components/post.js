@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { getComments } from "../redux/actions";
 import { Comments } from "./comments";
+import { Link } from "react-router-dom";
+import Profile from "./profile";
 
 const Post = ({ id, title, body, dispatch, comments }) => {
   const [isShow, setisShow] = useState(false);
@@ -8,10 +10,12 @@ const Post = ({ id, title, body, dispatch, comments }) => {
     <div className="pt-3">
       <div className="card w-75">
         <div>
-          <img
-            style={{ width: 30 }}
-            src="https://pic.onlinewebfonts.com/svg/img_569204.png"
-          />
+          <Link to={`/profile/${id}`} state={{ id: id }}>
+            <img
+              style={{ width: 30 }}
+              src="https://pic.onlinewebfonts.com/svg/img_569204.png"
+            />
+          </Link>
         </div>
         <div className="card-body" key={id}>
           <h5 className="card-title">{title}</h5>
