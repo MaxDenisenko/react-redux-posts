@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Post from "./post";
 import { getPosts } from "../redux/actions";
 import Loader from "./loader";
-import { SEARCH, SORT_DOWN, SORT_UP } from "../redux/types";
+import { CURENT_PAGE, SEARCH, SORT_DOWN, SORT_UP } from "../redux/types";
 
 const Posts = () => {
   const [search, setSearch] = useState("");
@@ -11,6 +11,19 @@ const Posts = () => {
   const posts = useSelector((state) => state.posts.posts);
   const comments = useSelector((state) => state.posts.comments);
   const load = useSelector((state) => state.app.loading);
+  const pageSize = useSelector((state) => state.posts.pageSize);
+  const postsCount = useSelector((state) => state.posts.postsCount);
+  const curentPage = useSelector((state) => state.posts.curentPage);
+
+  let pagesCount = Math.ceil(postsCount / pageSize);
+  let pages = [];
+  for (let i = 1; i <= pagesCount; i++) {
+    pages.push(i);
+  }
+  const lastIndex = curentPage * pageSize;
+  const firstIndex = lastIndex - pageSize;
+  const currentPosts = posts.slice(firstIndex, lastIndex);
+
   useEffect(() => {
     dispatch(getPosts());
   }, []);
@@ -58,9 +71,31 @@ const Posts = () => {
           </button>
         </span>
       </div>
+
+      <nav aria-label="..." className="pt-3">
+        <ul className="pagination pagination-sm">
+          {pages.map((page, index) => (
+            <li class="page-item">
+              <span
+                className="page-link"
+                key={index}
+                onClick={() =>
+                  dispatch({
+                    type: CURENT_PAGE,
+                    payload: page,
+                  })
+                }
+                tabindex="-1"
+              >
+                {page}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </nav>
       <div>
         {posts &&
-          posts.map((post) => (
+          currentPosts.map((post) => (
             <Post
               title={post.title}
               id={post.id}

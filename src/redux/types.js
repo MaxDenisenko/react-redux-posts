@@ -6,3 +6,4 @@ export const FETCH_USER = "USER/FETCH_USER";
 export const SEARCH = "POST/SEARCH";
 export const SORT_UP = "POST/SORT_UP";
 export const SORT_DOWN = "POST/SORT_DOWN";
+export const CURENT_PAGE = "APP/CURENT_PAGE";

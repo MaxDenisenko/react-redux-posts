@@ -11,10 +11,10 @@ export const getPosts = () => {
   return async (dispatch) => {
     dispatch(showLoader());
     const res = await axios.get(
-      "https://jsonplaceholder.typicode.com/posts?_limit=50"
+      `https://jsonplaceholder.typicode.com/posts?_limit=100`
     );
     const data = res.data;
-    dispatch({ type: FETCH_POST, payload: data });
+    dispatch({ type: FETCH_POST, payload: data, postsCount: data.length });
     setTimeout(() => {
       dispatch(hideLoader());
     }, 500);
