@@ -11,7 +11,7 @@ export const getPosts = () => {
   return async (dispatch) => {
     dispatch(showLoader());
     const res = await axios.get(
-      "https://jsonplaceholder.typicode.com/posts?_limit=5"
+      "https://jsonplaceholder.typicode.com/posts?_limit=50"
     );
     const data = res.data;
     dispatch({ type: FETCH_POST, payload: data });
@@ -37,23 +37,23 @@ export const getComments = (postId) => {
   };
 };
 
-export const getUser = (id) => {
+export const getUser = (userId) => {
   return async (dispatch) => {
     dispatch(showLoader());
     const resUser = await axios.get(
-      `https://jsonplaceholder.typicode.com/users/${id}`
+      `https://jsonplaceholder.typicode.com/users/${userId}`
     );
     const dataUser = resUser.data;
     dispatch({ type: FETCH_USER, payload: dataUser });
 
     const resPosts = await axios.get(
-      `https://jsonplaceholder.typicode.com/posts?userId=${id}`
+      `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
     );
     const dataPosts = resPosts.data;
     dispatch({ type: FETCH_POST, payload: dataPosts });
 
     const resComments = await axios.get(
-      `https://jsonplaceholder.typicode.com/comments?userId=${id}`
+      `https://jsonplaceholder.typicode.com/comments?userId=${userId}`
     );
     const dataComments = resComments.data;
     dispatch({ type: FETCH_COMMENTS, payload: dataComments });

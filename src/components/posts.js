@@ -30,6 +30,7 @@ const Posts = () => {
     <Post
       title={post.title}
       id={post.id}
+      userId={post.userId}
       body={post.body}
       dispatch={dispatch}
       comments={comments}

@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import { getComments } from "../redux/actions";
 import { Comments } from "./comments";
 import { Link } from "react-router-dom";
-import Profile from "./profile";
 
-const Post = ({ id, title, body, dispatch, comments }) => {
+const Post = ({ userId, title, body, dispatch, comments, id }) => {
   const [isShow, setisShow] = useState(false);
   return (
     <div className="pt-3">
       <div className="card w-75">
         <div>
-          <Link to={`/profile/${id}`} state={{ id: id }}>
+          <Link to={`/profile/${userId}`} state={{ userId: userId }}>
             <img
               style={{ width: 30 }}
               src="https://pic.onlinewebfonts.com/svg/img_569204.png"

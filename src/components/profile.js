@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../redux/actions";
-import { useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import Loader from "./loader";
 import Post from "./post";
 
@@ -12,14 +12,18 @@ const Profile = () => {
   const comments = useSelector((state) => state.posts.comments);
   const load = useSelector((state) => state.app.loading);
   const location = useLocation();
-  const { id } = location.state;
+  const { userId } = location.state;
   useEffect(() => {
-    dispatch(getUser(id));
+    dispatch(getUser(userId));
   }, []);
   if (user.length === 0) return <Loader />;
   return (
     <>
       <div className="pt-3">
+        <Link to={"/posts"} className="btn btn-secondary">
+          Назад
+        </Link>
+
         <div>
           <b>Profile: </b> {user.name}
         </div>
@@ -41,6 +45,7 @@ const Profile = () => {
           <Post
             title={post.title}
             id={post.id}
+            userId={post.userId}
             body={post.body}
             dispatch={dispatch}
             comments={comments}
