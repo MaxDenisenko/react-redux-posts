@@ -1,15 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Alert from "./alert";
 
 const MainMenu = () => {
+  const alert = useSelector((state) => state.app.alert);
   return (
     <div>
-      <div className="text-center">
-        <h1>MaxDenisenko</h1>
-      </div>
-      <div className="text-center">
-        <h3>MaxDenisenko2013@yandex.ru</h3>
-      </div>
       <div>
         <ul className="nav nav-tabs">
           <li className="nav-item">
@@ -24,6 +21,7 @@ const MainMenu = () => {
           </li>
         </ul>
       </div>
+      {alert && <Alert msg={alert} />}
     </div>
   );
 };
