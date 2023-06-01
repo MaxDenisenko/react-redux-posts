@@ -1,6 +1,12 @@
-import { HIDE_ALERT, HIDE_LOADER, SHOW_ALERT, SHOW_LOADER } from "./types";
+import {
+  HIDE_ALERT,
+  HIDE_LOADER,
+  SHOW_ALERT,
+  SHOW_LOADER,
+  SHOW_MENU,
+} from "./types";
 
-const initialState = { loading: false, alert: null };
+const initialState = { loading: false, alert: null, menu: false };
 
 export const AppReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -24,7 +30,11 @@ export const AppReducer = (state = initialState, action) => {
         ...state,
         alert: null,
       };
-
+    case SHOW_MENU:
+      return {
+        ...state,
+        menu: action.payload,
+      };
     default:
       return state;
   }

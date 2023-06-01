@@ -61,6 +61,7 @@ const Posts = () => {
       </form>
       <div>
         <span>
+          <br />
           <button className="btn btn-primary" onClick={sortUp}>
             Сортировать по возрастанию
           </button>

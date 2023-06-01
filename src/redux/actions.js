@@ -7,6 +7,7 @@ import {
   FETCH_USER,
   SHOW_ALERT,
   HIDE_ALERT,
+  SHOW_MENU,
 } from "./types";
 
 export const getPosts = () => {
@@ -39,14 +40,14 @@ export const hideLoader = () => {
 export const showAlert = (error) => {
   return (dispatch) => {
     dispatch({ type: SHOW_ALERT, payload: error });
-    setTimeout(() => {
-      dispatch(hideAlert());
-    }, 3000);
   };
 };
 
 export const hideAlert = () => {
   return { type: HIDE_ALERT };
+};
+export const showMenu = (menu) => {
+  return { type: SHOW_MENU, payload: menu };
 };
 
 export const getComments = (postId) => {

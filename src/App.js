@@ -6,15 +6,17 @@ import AboutMe from "./components/aboutme";
 import Profile from "./components/profile";
 function App() {
   return (
-    <div className="container pt-3">
+    <div>
       <MainMenu />
-      <Routes>
-        <Route path="*" element={<div>404 not found</div>} />
-        <Route path="/" element={<Navigate replace to={"/posts"} />} />
-        <Route path="/posts" element={<Posts />} />
-        <Route path="/aboutme" element={<AboutMe />} />
-        <Route path="/profile/:id" element={<Profile />} />
-      </Routes>
+      <div className="container pt-5">
+        <Routes>
+          <Route path="*" element={<div>404 not found</div>} />
+          <Route path="/" element={<Navigate replace to={"/posts"} />} />
+          <Route path="/posts" element={<Posts />} />
+          <Route path="/aboutme" element={<AboutMe />} />
+          <Route path="/profile/:id" element={<Profile />} />
+        </Routes>
+      </div>
     </div>
   );
 }

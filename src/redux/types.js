@@ -9,3 +9,4 @@ export const SORT_DOWN = "POST/SORT_DOWN";
 export const CURENT_PAGE = "APP/CURENT_PAGE";
 export const SHOW_ALERT = "APP/SHOW_ALERT";
 export const HIDE_ALERT = "APP/HIDE_ALERT";
+export const SHOW_MENU = "APP/SHOW_MENU";
