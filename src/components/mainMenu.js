@@ -38,23 +38,6 @@ const MainMenu = () => {
       )}
     </>
 
-    // <div>
-    //   <div>
-    //     <ul className="nav nav-tabs">
-    //       <li className="nav-item">
-    //         <Link className="nav-link" to={"/posts"}>
-    //           Посты
-    //         </Link>
-    //       </li>
-    //       <li className="nav-item">
-    //         <Link className="nav-link" to={"/aboutme"}>
-    //           Обо мне
-    //         </Link>
-    //       </li>
-    //     </ul>
-    //   </div>
-
-    // </div>
   );
 };
 export default MainMenu;
