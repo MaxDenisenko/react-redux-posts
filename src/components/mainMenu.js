@@ -32,12 +32,17 @@ const MainMenu = () => {
                   </Link>
                 </li>
               </ul>
+              <p className="alert alert-primary" role="alert">
+                <b>Имя и Фамилия:</b> Макс Денисенко
+              </p>
+              <p className="alert alert-primary" role="alert">
+                <b>Email:</b> MaxDenisenko2013@yandex.ru
+              </p>
             </div>
           </div>
         </div>
       )}
     </>
-
   );
 };
 export default MainMenu;
