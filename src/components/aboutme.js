@@ -39,7 +39,7 @@ const AboutMe = () => {
             <div className="col-lg-6">
               <div className="about-avatar">
                 <img
-                  src="https://img.hhcdn.ru/photo/723544839.jpeg?t=1685693570&h=6O1gt6knMZHTcTI60r0UOw"
+                  src="https://img.hhcdn.ru/photo/723544839.jpeg?t=1686220693&h=Y0vXgbOq5uqiaJNdq4oxbw"
                   title=""
                   alt=""
                 />
