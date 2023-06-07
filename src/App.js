@@ -11,7 +11,10 @@ function App() {
       <div className="container pt-5">
         <Routes>
           <Route path="*" element={<div>404 not found</div>} />
-          <Route path="/" element={<Navigate replace to={"/posts"} />} />
+          <Route
+            path="/react-redux-posts/"
+            element={<Navigate replace to={"/posts"} />}
+          />
           <Route path="/posts" element={<Posts />} />
           <Route path="/aboutme" element={<AboutMe />} />
           <Route path="/profile/:id" element={<Profile />} />
